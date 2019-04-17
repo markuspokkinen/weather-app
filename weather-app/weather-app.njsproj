@@ -34,8 +34,13 @@
     <Content Include="public\index.html" />
     <Content Include="public\manifest.json" />
     <Content Include="README.md" />
+    <Content Include="src\CurrentWeather.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\ForecastWeather.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\index.css" />
-    <Content Include="src\logo.svg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />
@@ -47,6 +52,7 @@
     <Compile Include="src\ForcastWeather.js" />
     <Compile Include="src\index.js" />
     <Compile Include="src\serviceWorker.js" />
+    <Compile Include="src\WeatherImage.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

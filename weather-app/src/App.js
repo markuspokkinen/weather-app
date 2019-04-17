@@ -6,50 +6,33 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            curWeath: {
-                name: "",
-                weather: [{}],
-                main: {}
-            },
-            forcWeath: { list: [{}]}
+            lat: 0,
+            lon: 0,
+
         }
     }
 
-    componentDidMount() {
-        if (navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(this.getdata)
-        else {
-            this.getdata({ position: { coords: {latitude:0,longtitude:0}}})
+        componentDidMount() {
+            if (navigator.geolocation)
+                navigator.geolocation.watchPosition(this.setpos, this.error, { enableHighAccuracy:true })
         }
-    }
 
-    getdata = (position) => {
-
-        fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    curWeath: res,
-                    forcWeath: this.state.forcWeath
-                })
+        setpos = (position) => {
+            this.setState({
+                lat: position.coords.latitude,
+                lon: position.coords.longitude
             })
-        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
-                .then(res => res.json())
-                .then(res => {
-                    this.setState({
-                        curWeath: this.state.curWeath,
-                        forcWeath: res
-                    }, () => { console.log(this.state) })
-                });
-        
+    }
+    error = (err) => {
+        alert(err)
     }
 
-  render() {
-    return (
-        <div className="App">
-            <Current data={this.state.curWeath} />
-            <Forecast data={this.state.forcWeath} />
-      </div>
-    );
-  }
-}
+        render() {
+            return (
+                <div id="App">
+                    <Current lat={this.state.lat} lon={this.state.lon} />
+                    <Forecast lat={this.state.lat} lon={this.state.lon}/>
+                </div>
+            );
+        }
+    }
