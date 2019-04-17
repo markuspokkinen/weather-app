@@ -14,7 +14,7 @@ export default class App extends Component {
 
         componentDidMount() {
             if (navigator.geolocation)
-                navigator.geolocation.watchPosition(this.setpos, this.error, { enableHighAccuracy:true })
+                navigator.geolocation.getCurrentPosition(this.setpos, this.error, { enableHighAccuracy: true })
         }
 
         setpos = (position) => {

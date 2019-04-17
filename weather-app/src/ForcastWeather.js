@@ -14,16 +14,16 @@ export default class ForcastWeather extends Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
-                    list:res.list
+                    list: res.list
                 }, () => { console.log(this.state) })
             });
 
     }
     dateortime = (ent, ind) => {
         if (ind % 2 === 0) {
-            return <p key={"date"+ind}>date: {ent}</p>
+            return <p key={"date" + ind}>date: {ent}</p>
         } else {
-            return <p key={"time"+ind}>time: {ent}</p>
+            return <p key={"time" + ind}>time: {ent}</p>
         }
     }
 
@@ -32,19 +32,39 @@ export default class ForcastWeather extends Component {
             <div id="forcast-div">
                 {this.state.list.map((ent) =>
                     <div className="forcast-data" key={ent.dt}>
-                        {ent.dt_txt.split(" ").map((ent1, ind) =>
-                            this.dateortime(ent1, ind)
-                        )}
-                        <p>weather: {ent.weather[0].main}</p>
-                        <ImageViewer id={ent.weather[0].icon} />
-                        <p>humidity: {ent.main.humidity}%</p>
-                        <p>pressure: {ent.main.pressure}</p>
-                        <p>temp: {ent.main.temp} C</p>
-                        <p>temp max: {ent.main.temp_max} C</p>
-                        <p>temp min:{ent.main.temp_min} C</p>
+                        <div>
+                            {ent.dt_txt.split(" ").map((ent1, ind) =>
+                                this.dateortime(ent1, ind)
+                            )}
+                        </div>
+                        <div>
+                            <p>weather: </p>
+                            <p>{ent.weather[0].main}</p>
+                            <ImageViewer id={ent.weather[0].icon} />
+                        </div>
+                        <div>
+                            <p>humidity: </p>
+                            <p>{ent.main.humidity}%</p>
+                        </div>
+                        <div>
+                            <p>pressure:</p>
+                            <p> {ent.main.pressure}</p>
+                        </div>
+                        <div>
+                            <p>temp:</p>
+                            <p> {ent.main.temp} C</p>
+                        </div>
+                        <div>
+                            <p>temp max: </p>
+                            <p>{ent.main.temp_max} C</p>
+                        </div>
+                        <div>
+                            <p>temp min: </p>
+                            <p>{ent.main.temp_min} C</p>
+                        </div>
                     </div>
                 )}
             </div>
-            )
+        )
     }
 }
