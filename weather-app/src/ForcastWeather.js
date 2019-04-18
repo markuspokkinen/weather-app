@@ -1,69 +1,56 @@
 ﻿import React, { Component } from 'react';
-import ImageViewer from './WeatherImage.js';
-import './ForecastWeather.css';
+import WeathIm from './weatherImage';
+import './forecastWeather.css';
 
-export default class ForcastWeather extends Component {
+export default class forcastWeather extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            list: [{ dt: "", main: {}, weather: [{}], dt_txt: " " }]
+            list: [{ dt: "", main: {}, weather: [{}], dt_txt: "" }]
         }
-    }
-    componentWillReceiveProps(nextprops) {
-        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + nextprops.lat + "&lon=" + nextprops.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
-            .then(res => res.json())
+        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat + "&lon=" + this.props.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
+            .then(response => response.json())
             .then(res => {
                 this.setState({
                     list: res.list
-                }, () => { console.log(this.state) })
+                });
+            });
+    }
+    componentWillReceiveProps(nextprops) {
+        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + nextprops.lat + "&lon=" + nextprops.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
+            .then(response => response.json())
+            .then(res => {
+                this.setState({
+                    list: res.list
+                })
             });
 
     }
     dateortime = (ent, ind) => {
         if (ind % 2 === 0) {
-            return <p key={"date" + ind}>date: {ent}</p>
+            return <td>{ent}</td>
         } else {
-            return <p key={"time" + ind}>time: {ent}</p>
+            return <td>{ent}</td>
         }
     }
 
     render() {
         return (
-            <div id="forcast-div">
-                {this.state.list.map((ent) =>
-                    <div className="forcast-data" key={ent.dt}>
-                        <div>
-                            {ent.dt_txt.split(" ").map((ent1, ind) =>
-                                this.dateortime(ent1, ind)
-                            )}
-                        </div>
-                        <div>
-                            <p>weather: </p>
-                            <p>{ent.weather[0].main}</p>
-                            <ImageViewer id={ent.weather[0].icon} />
-                        </div>
-                        <div>
-                            <p>humidity: </p>
-                            <p>{ent.main.humidity}%</p>
-                        </div>
-                        <div>
-                            <p>pressure:</p>
-                            <p> {ent.main.pressure}</p>
-                        </div>
-                        <div>
-                            <p>temp:</p>
-                            <p> {ent.main.temp} C</p>
-                        </div>
-                        <div>
-                            <p>temp max: </p>
-                            <p>{ent.main.temp_max} C</p>
-                        </div>
-                        <div>
-                            <p>temp min: </p>
-                            <p>{ent.main.temp_min} C</p>
-                        </div>
-                    </div>
-                )}
+            <div id="forcast-maindiv">
+                <h2>Forecast</h2>
+                <table>
+                    {this.state.list.map((ent) =>
+                        <tr>
+                            {ent.dt_txt.split(" ").map((entry, index) => this.dateortime(entry, index))}
+                            <td>{ent.weather[0].main}</td>
+                            <td><WeathIm icon={ent.weather[0].icon} /></td>
+                            <td> {ent.main.temp} &#8451;</td>
+                            <td> max: {ent.main.temp_max} &#8451;</td>
+                            <td>min: {ent.main.temp_min} &#8451;</td>
+
+                        </tr>
+                    )}
+                </table>
             </div>
         )
     }

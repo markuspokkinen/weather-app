@@ -1,0 +1,16 @@
+﻿html {
+    width:100%;
+}
+body {
+    width:100%;
+}
+
+@media screen and (min-width:1000px){
+    #app {
+        position: absolute;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    
+
+}

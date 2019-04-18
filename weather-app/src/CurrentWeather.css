@@ -1,18 +1,14 @@
-﻿body {
-    
+﻿#current-div {
+    position: relative;
+  
 }
-#current-div {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-#current-div > p {
-    text-align: center;
-    width:unset;
+#current-div > p,h1,h2{
+    margin:5px;
 }
 
-#current-div > img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+    #current-div > h1 {
+        font-size: 70px;
+        font-weight: lighter;
+        margin-top:0;
+        margin-bottom:0;
+    }

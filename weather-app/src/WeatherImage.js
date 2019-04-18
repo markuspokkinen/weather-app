@@ -1,22 +1,26 @@
 ﻿import React, { Component } from 'react';
 
-export default class WeatherImage extends Component {
+export default class weatherImage extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            icon: props.id
+            icon: props.icon
         }
     }
     componentWillReceiveProps(nextprops) {
-        this.setState({
-            icon: nextprops.id
-        })
+        if (this.state.icon !== nextprops.icon) {
+            this.setState({
+                icon: nextprops.icon
+            })
+        }
     }
 
     render() {
         return (
-            <img src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />
+            <div>
+                {< img src = { "https://openweathermap.org/img/w/" + this.state.icon + ".png" } alt = "not loaded" />}
+            </div>
         )
     }
 }

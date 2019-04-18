@@ -1,17 +1,10 @@
-﻿body {
-}
-
-#forcast-div{
+﻿#forcast-maindiv{
+    position:relative;
     overflow-x:auto;
-    display:flex;
+    overflow-y:auto;
+    display:inline-block;
+    max-width:100%;
 }
-.forcast-data{
-   float:left;
-   width:auto;
-   margin-left:10px;
-}
-.forcast-data > p{
-    text-align:center;
-    margin-top:0;
-    margin-bottom:10px;
+td{
+    padding:5px;
 }
