@@ -36,17 +36,20 @@ export default class forcastWeather extends Component {
 
     render() {
         return (
-            <div id="forcast-maindiv">
-                <h2>Forecast</h2>
+            <div id="forcast-main">
+                
                 <table>
+                    <tr>
+                        <th colSpan="7"><h2>Forecast</h2></th>
+                    </tr>
                     {this.state.list.map((ent) =>
                         <tr>
                             {ent.dt_txt.split(" ").map((entry, index) => this.dateortime(entry, index))}
                             <td>{ent.weather[0].main}</td>
                             <td><WeathIm icon={ent.weather[0].icon} /></td>
-                            <td> {ent.main.temp} &#8451;</td>
-                            <td> max: {ent.main.temp_max} &#8451;</td>
-                            <td>min: {ent.main.temp_min} &#8451;</td>
+                            <td> {Math.round(ent.main.temp)} &#8451;</td>
+                            <td> max: {Math.round(ent.main.temp_max)} &#8451;</td>
+                            <td>min: {Math.round(ent.main.temp_min)} &#8451;</td>
 
                         </tr>
                     )}

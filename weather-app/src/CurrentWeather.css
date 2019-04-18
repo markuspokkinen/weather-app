@@ -1,14 +1,38 @@
 ﻿#current-div {
     position: relative;
-  
+    height:50%;
+    top:0;
+    text-align:center;
 }
-#current-div > p,h1,h2{
-    margin:5px;
-}
+    #current-div > p{
+        margin: 5px;
+        display: inline-block;
+    }
+
+    #current-div > h2, h1 {
+        margin-top: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    #current-div > img {
+        width: 100px;
+    }
 
     #current-div > h1 {
         font-size: 70px;
         font-weight: lighter;
-        margin-top:0;
-        margin-bottom:0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+#otherCurrentdata > p {
+    display: inline-block;
+    padding:10px;
+    justify-content: center;
+    align-items: center;
+}
+
+    #otherCurrentdata > p:first-child {
+        border-right: solid 1px;
     }

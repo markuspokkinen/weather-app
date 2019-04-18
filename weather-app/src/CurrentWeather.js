@@ -35,13 +35,15 @@ export default class currentWeather extends Component {
     render() {
         return (
             <div id="current-div">
-                <h2> {this.state.name}</h2>
-                <p><CurWeathIm icon={this.state.weather[0].icon} />{this.state.weather[0].main}</p>
-
-                <p>&#8593; {this.state.main.temp_max} &#8451; &#8595; {this.state.main.temp_min} &#8451;</p>
-                <h1>{this.state.main.temp} &#8451;</h1>
-                {/*<p>humidity: {this.state.main.humidity}%</p>
-                    <p>pressure: {this.state.main.pressure} hPa</p>*/}
+                <h2> {this.state.name} </h2>
+                <h1>{Math.round(this.state.main.temp)} &#8451;</h1>
+                <CurWeathIm icon={this.state.weather[0].icon} />
+                <p>{this.state.weather[0].main}</p>
+                <div id="otherCurrentdata">
+                    <p>&#8593; {Math.round(this.state.main.temp_max)} &#8451; &#8595; {Math.round(this.state.main.temp_min)} &#8451;</p>
+                    <p>humidity: {this.state.main.humidity}%</p>
+                </div>
+                {/*<p>pressure: {this.state.main.pressure} hPa</p>*/}
             </div>
         )
     }

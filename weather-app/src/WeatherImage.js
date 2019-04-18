@@ -17,10 +17,6 @@ export default class weatherImage extends Component {
     }
 
     render() {
-        return (
-            <div>
-                {< img src = { "https://openweathermap.org/img/w/" + this.state.icon + ".png" } alt = "not loaded" />}
-            </div>
-        )
+        return (< img src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />)
     }
 }

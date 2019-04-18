@@ -1,10 +1,22 @@
-﻿#forcast-maindiv{
-    position:relative;
-    overflow-x:auto;
-    overflow-y:auto;
-    display:inline-block;
-    max-width:100%;
+﻿#forcast-main {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    top:5%;
 }
-td{
-    padding:5px;
+td {
+    white-space: nowrap;
+    padding: 5px;
+    border-bottom: dashed white 1px;
+}
+th {
+    border-bottom: solid white 1px;
+}
+table {
+
+    position:relative;
+    border: ridge white 1px;
+    border-radius: 5px;
+    margin:0px auto;
+
 }
