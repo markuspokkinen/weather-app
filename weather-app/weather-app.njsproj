@@ -40,10 +40,19 @@
     <Content Include="src\currentWeather.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\fivedaydiv.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\forecastWeather.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\index.css" />
+    <Content Include="src\oneday.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\weatherImage.css">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />
@@ -52,6 +61,10 @@
   <ItemGroup>
     <Compile Include="src\App.js" />
     <Compile Include="src\currentWeather.js" />
+    <Compile Include="src\fivedaydiv.js">
+      <SubType>Code</SubType>
+      <TestFramework>ExportRunner</TestFramework>
+    </Compile>
     <Compile Include="src\forcastWeather.js" />
     <Compile Include="src\index.js" />
     <Compile Include="src\oneday.js">

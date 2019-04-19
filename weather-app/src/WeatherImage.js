@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import './weatherImage.css';
 
 export default class weatherImage extends Component {
 
@@ -17,6 +18,17 @@ export default class weatherImage extends Component {
     }
 
     render() {
-        return (< img src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />)
+        var animation = "nothing";
+        switch (this.state.icon)
+
+        {
+            case '01d':
+                animation = "spinner";
+                break;
+            case '01n':
+                animation = "spinner";
+                break;
+        }
+        return (< img className={animation} src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />)
     }
 }

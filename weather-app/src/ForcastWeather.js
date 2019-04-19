@@ -1,23 +1,24 @@
 ﻿import React, { Component } from 'react';
-import WeathIm from './weatherImage';
 import OneDay from './oneday';
 import './forecastWeather.css';
+import FiveDays from './fivedaydiv';
 
 export default class forcastWeather extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [{ dt: "", main: {}, weather: [{}], dt_txt: "" }],
-            days: [{}]
+            list: [],
+            days:[],
+            daysArray: [],
+            index: 1
         }
-        this.getWeatherdata();
+        this.getWeatherdata(this.props);
     }
     componentWillReceiveProps(nextprops) {
-        this.getWeatherdata();
-
+        this.getWeatherdata(nextprops);
     }
-    getWeatherdata() {
-        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat + "&lon=" + this.props.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
+    getWeatherdata = (data) =>{
+        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + data.lat + "&lon=" + data.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
             .then(response => response.json())
             .then(res => {
                 var list = res.list;
@@ -36,68 +37,31 @@ export default class forcastWeather extends Component {
                     }
                     daysArray.push(element);
                 }
-
-                console.log(daysArray);
-
+                days.shift();
                 this.setState({
                     list: res.list,
-                    days: daysArray
+                    daysArray: daysArray,
+                    days: days
                 })
             });
 
     }
-    dateortimefunc = (ent, ind) => {
-        if (ind % 2 === 0) {
-            return <td key={"date: [" + ind + "]"}>{ent}</td>
-        } else {
-            return <td key={"time: [" + ind + "]"}>{ent}</td>
-        }
+    daycallback = (day) => {
+        this.setState({
+            list: this.state.list,
+            daysArray: this.state.daysArray,
+            days: this.state.days,
+            index:day
+        })
     }
-
     render() {
         return (
             <div id="forcast-main">
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th colSpan="100000"><h2>Today</h2></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            {this.state.list.map((entry) => {
-                                return <td key={entry.dt_txt}>
-                                    {entry.dt_txt}
-
-
-
-                                </td>
-                            })
-
-
-                            }
-                        </tr>
-                    </tbody>
-                    <thead>
-                        <tr>
-                            <th colSpan="100000"><h2>Forecast</h2></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.list.map((ent) =>
-                            <tr key={"table:" + ent.dt_txt}>
-                                {ent.dt_txt.split(" ").map((entry, index) => this.dateortimefunc(entry, index))}
-                                <td>{ent.weather[0].main}</td>
-                                <td><WeathIm icon={ent.weather[0].icon} /></td>
-                                <td> {Math.round(ent.main.temp)} &#8451;</td>
-                                <td> max: {Math.round(ent.main.temp_max)} &#8451;</td>
-                                <td>min: {Math.round(ent.main.temp_min)} &#8451;</td>
-
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                <h2>Today</h2>
+                <OneDay data={this.state.daysArray[0]} />
+                <h2>Forecast</h2>
+                <FiveDays list={this.state.days} callback={this.daycallback.bind(this)} />
+                <OneDay data={this.state.daysArray[this.state.index]} />
             </div>
         )
     }

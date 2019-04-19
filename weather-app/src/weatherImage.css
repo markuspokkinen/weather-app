@@ -1,0 +1,23 @@
+﻿.spinner {
+    animation: img-spin infinite 15s linear;
+}
+
+@-webkit-keyframes img-spin {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes img-spin {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}

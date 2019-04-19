@@ -1,0 +1,22 @@
+﻿.dayDiv {
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.onedayDiv {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+    .onedayDiv:not(:first-child) {
+        padding-left: 5px;
+        border-left: dashed 1px white;
+    }
+
+    .onedayDiv > p {
+        margin: 0;
+    }
+
+    .onedayDiv > img {
+        width: 30px;
+    }

@@ -1,8 +1,7 @@
 ﻿#current-div {
     position: relative;
-    height:50%;
-    top:0;
-    text-align:center;
+    top: 0;
+    text-align: center;
 }
     #current-div > p{
         margin: 5px;
@@ -27,12 +26,11 @@
     }
 
 #otherCurrentdata > p {
+    font-size:15px;
     display: inline-block;
-    padding:10px;
-    justify-content: center;
-    align-items: center;
+    padding:5px;
 }
 
-    #otherCurrentdata > p:first-child {
-        border-right: solid 1px;
+    #otherCurrentdata > p:not(:first-child){
+        border-left: solid 1px;
     }

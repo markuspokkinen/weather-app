@@ -1,23 +1,13 @@
 ﻿#forcast-main {
     position: relative;
-    height: 200px;
     overflow: auto;
-    top:5%;
+    background-color: rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 10px;
 }
-td {
-    white-space: nowrap;
-    padding: 5px;
-    border-bottom: dashed white 1px;
-}
-th {
-    border-bottom: solid white 1px;
-    text-align:left;
-    position:sticky;
-}
-table {
 
-    position:relative;
-    border: ridge white 1px;
-    border-radius: 5px;
-    margin:0px auto;
-}
+    #forcast-main > h2 {
+        margin: 0;
+        padding-bottom: 5px;
+        border-bottom: solid 1px white;
+    }
