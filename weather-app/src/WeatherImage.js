@@ -28,6 +28,8 @@ export default class weatherImage extends Component {
             case '01n':
                 animation = "spinner";
                 break;
+            default:
+                break;
         }
         return (< img className={animation} src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />)
     }
