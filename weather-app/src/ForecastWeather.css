@@ -11,6 +11,8 @@ td {
 }
 th {
     border-bottom: solid white 1px;
+    text-align:left;
+    position:sticky;
 }
 table {
 
@@ -18,5 +20,4 @@ table {
     border: ridge white 1px;
     border-radius: 5px;
     margin:0px auto;
-
 }

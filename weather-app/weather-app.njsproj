@@ -54,6 +54,9 @@
     <Compile Include="src\currentWeather.js" />
     <Compile Include="src\forcastWeather.js" />
     <Compile Include="src\index.js" />
+    <Compile Include="src\oneday.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\serviceWorker.js" />
     <Compile Include="src\weatherImage.js" />
   </ItemGroup>
