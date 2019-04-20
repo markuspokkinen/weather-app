@@ -3,6 +3,7 @@ import Forecast from './forcastWeather';
 import Current from './currentWeather';
 import './App.css';
 
+
 /**
  * Images
  * sun url(https://www.gannett-cdn.com/-mm-/481602f6d9edcd4edf3b3b8a2ff6d2d98ae8eb24/c=0-0-507-286/local/-/media/MIGroup/PortHuron/2014/09/16/1410873237000-SUNNY.jpg?width=3200&height=1680&fit=crop)
