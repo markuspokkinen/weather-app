@@ -43,6 +43,7 @@ export default class forcastWeather extends Component {
                     daysArray: daysArray,
                     days: days
                 })
+
             });
 
     }
@@ -51,7 +52,7 @@ export default class forcastWeather extends Component {
             list: this.state.list,
             daysArray: this.state.daysArray,
             days: this.state.days,
-            index:day
+            index:day+1
         })
     }
     render() {

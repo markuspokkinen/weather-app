@@ -18,6 +18,3 @@
 .fivedayOne > p{
     margin:5px;
 }
-.fivedayOne:active{
-    background-color:rgba(0,0,0,0.9);
-}

@@ -15,11 +15,11 @@ export default class fivedaydiv extends Component {
     }
     componentWillReceiveProps(nextprops) {
         var list = nextprops.list;
-        var tmp = list.map((elem) => elem.split("-"));
+        var tmp = list.map((elem) => elem.split("-")[2]);
         var days = tmp.map((elem) => {
 
             var date = new Date();
-            date.setDate(parseInt(elem[2],10));
+            date.setDate(parseInt(elem,10));
             return this.state.weekdays[date.getDay()];
 
         })
@@ -46,11 +46,11 @@ export default class fivedaydiv extends Component {
     }
 
     render() {
-        var style = { backgroundColor: "rgba(0,0,0,0.5)",borderBottom:0 }
+        var style = { backgroundColor: "rgba(0,0,0,0.4)",borderBottom:0 }
         return (
             <div id="fivedaysdiv">
                 {this.state.list.map((element, index) =>
-                    <div className="fivedayOne" onClick={this.onClick} style={this.state.index === index ? style: {} }>
+                    <div key={"five[" + index+"]"} className="fivedayOne" onClick={this.onClick} style={this.state.index === index ? style : {}}>
                         <p>{this.state.five[index]}</p>
                     </div>
                     )}

@@ -19,16 +19,16 @@ export default class oneday extends Component {
 
     render() {
         return (
-            <div class = "dayDiv">
+            <div className="dayDiv">
                 {this.state.list.map((element) =>
-                    <div className="onedayDiv">
+                    <div className="onedayDiv" key={"one" + element.dt_txt}>
                         <p>{element.dt_txt.split(" ")[1]}</p>
                         <WeathIm icon={element.weather[0].icon} />
                         <p>{Math.round(element.main.temp)}&#8451;</p>
                         <p>&#8593; {Math.round(element.main.temp_max)}&#8451; &#8595;{element.main.temp_min}&#8451;</p>
+                        <p>{element.main.humidity}%</p>
                         <p>{element.wind.speed} m/s</p>
                         <p>{element.wind.deg}&deg;</p>
-                        <p>{element.main.humidity}%</p>
                         <p>{element.main.pressure} hPa</p>
                     </div>
                 )}

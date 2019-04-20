@@ -3,6 +3,7 @@ import CurWeathIm from './weatherImage';
 import './currentWeather.css'
 
 export default class currentWeather extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,21 +15,24 @@ export default class currentWeather extends Component {
     componentWillReceiveProps(nextprops) {
         this.getWeatherdata(nextprops);
     }
-    getWeatherdata = (data) =>{
+    getWeatherdata = (data) => {
         fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + data.lat + "&lon=" + data.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
             .then(response => response.json())
             .then(res => {
-            this.setState({
-                name: res.name,
-                weather: res.weather,
-                main: res.main
-            });
-        })
+                this.setState({
+                    name: res.name,
+                    weather: res.weather,
+                    main: res.main
+                });
+
+
+
+            })
     }
 
 
     render() {
-        console.log(this.state);
+        //console.log(this.state);
         return (
             <div id="current-div">
                 <h2> {this.state.name} </h2>
