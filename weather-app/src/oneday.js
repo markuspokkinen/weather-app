@@ -30,6 +30,7 @@ export default class oneday extends Component {
         return winddir[ind] + ": " + deg;
     }
     render() {
+        console.log(this.state)
         return (
             <div className="dayDiv">
                 {this.state.list.map((element) =>

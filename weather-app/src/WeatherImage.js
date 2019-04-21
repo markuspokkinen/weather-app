@@ -22,6 +22,10 @@ export default class weatherImage extends Component {
             default:
                 break;
         }
-        return (< img className={animation} src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />)
+        if (this.state.icon !== undefined) {
+            return (< img className={animation} src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />)
+        } else {
+            return (<div></div>)
+        }
     }
 }
