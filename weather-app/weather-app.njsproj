@@ -70,6 +70,9 @@
     <Compile Include="src\oneday.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="src\otherCurrentdata.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\serviceWorker.js" />
     <Compile Include="src\weatherImage.js" />
   </ItemGroup>

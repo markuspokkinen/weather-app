@@ -3,14 +3,14 @@
     text-align: center;
 }
     #current-div > p{
-        margin: 5px;
+        margin: 0;
+        padding:0;
         display: inline-block;
     }
 
     #current-div > h1 {
         font-size: 70px;
         font-weight: lighter;
-
     }
     #current-div > h2{
         font-size:45px;
@@ -31,6 +31,7 @@
     font-size:15px;
     display: inline-block;
     padding:0;
+    margin:0;
     padding-right:5px;
     padding-left:5px;
 }
