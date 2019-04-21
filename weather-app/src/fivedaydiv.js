@@ -7,10 +7,8 @@ export default class fivedaydiv extends Component {
         this.state = {
             list: this.props.list,
             five: this.getfivedays(this.props),
-            index:0
+            index: 0
         }
-        this.onClick = this.onClick.bind(this);
-
     }
     componentWillReceiveProps(nextprops) {
         this.setState({
@@ -19,46 +17,30 @@ export default class fivedaydiv extends Component {
         })
     }
     getfivedays = (props) => {
-        var list = props.list;
-        var tmp = list.map((elem) => elem.split("-")[2]);
-        var days = tmp.map((elem) => {
-
-            var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        return (props.list.map((listelem) => listelem.split("-")[2])).map((elem) => {
             var date = new Date();
             date.setDate(parseInt(elem, 10));
             return weekdays[date.getDay()];
-
-        })
-        return days;
+        });
     }
     onClick = (event) => {
-        event.preventDefault();
         var index = this.state.five.indexOf(event.target.innerText);
-        //console.log(index)
-        this.props.callback(index)
-
+        this.props.callback(index);
         this.setState({
             index: index
         })
-
     }
-
     render() {
-        var style = { backgroundColor: "rgba(0,0,0,0.2)", borderRadius:"5px"}
+        var style = { backgroundColor: "rgba(0,0,0,0.2)", borderRadius: "5px" }
         return (
             <div id="fivedaysdiv">
                 {this.state.list.map((element, index) =>
-                    <div key={"five[" + index+"]"} className="fivedayOne" onClick={this.onClick} style={this.state.index === index ? style : {}}>
+                    <div key={"five[" + index + "]"} className="fivedayOne" onClick={this.onClick.bind(this)} style={this.state.index === index ? style : {}}>
                         <p>{this.state.five[index]}</p>
                     </div>
-                    )}
-
+                )}
             </div>
-
         )
-
-
     }
-
-
 }

@@ -1,17 +1,14 @@
 ﻿import React, { Component } from 'react';
+import './otherCurrentdata.css'
 
 export default class otherCurrentdata extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            main:this.props.main
+            main: this.props.main
         }
     }
-    componentWillReceiveProps(nextprops) {
-        this.setState({
-            main: nextprops.main
-        })
-    }
+    componentWillReceiveProps(nextprops) { this.setState({ main: nextprops.main }) }
 
     render() {
         return (

@@ -50,6 +50,9 @@
     <Content Include="src\oneday.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\otherCurrentdata.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\weatherImage.css">
       <SubType>Code</SubType>
     </Content>

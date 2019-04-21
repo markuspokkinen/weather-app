@@ -2,26 +2,17 @@
 import './weatherImage.css';
 
 export default class weatherImage extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             icon: props.icon
         }
     }
-    componentWillReceiveProps(nextprops) {
-        if (this.state.icon !== nextprops.icon) {
-            this.setState({
-                icon: nextprops.icon
-            })
-        }
-    }
+    componentWillReceiveProps(nextprops) { this.setState({ icon: nextprops.icon }) }
 
     render() {
         var animation = "nothing";
-        switch (this.state.icon)
-
-        {
+        switch (this.state.icon) {
             case '01d':
                 animation = "spinner";
                 break;

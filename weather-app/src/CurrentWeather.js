@@ -2,26 +2,24 @@
 import CurWeathIm from './weatherImage';
 import OtherCurData from './otherCurrentdata';
 import './currentWeather.css'
-import { Cipher } from 'crypto';
 
 export default class currentWeather extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name:"",
+            name: "",
             weather: [{}],
             main: {}
         }
         this.getWeatherdata(this.props);
     }
-    componentWillReceiveProps(nextprops) {
-        this.getWeatherdata(nextprops);
-    }
-    getWeatherdata = (data) => {
-        fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + data.lat + "&lon=" + data.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
+    componentWillReceiveProps(nextprops) { this.getWeatherdata(nextprops) }
+
+    getWeatherdata = (props) => {
+        fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + props.lat + "&lon=" + props.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
             .then(response => response.json())
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 this.setState({
                     name: res.name,
                     weather: res.weather,
@@ -29,7 +27,6 @@ export default class currentWeather extends Component {
                 });
             })
     }
-
     render() {
         return (
             <div id="current-div">

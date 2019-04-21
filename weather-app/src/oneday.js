@@ -9,16 +9,10 @@ export default class oneday extends Component {
             list: this.props.data
         };
     }
-    componentWillReceiveProps(nextprops) {
-        this.setState({
-            list: nextprops.data
-        });
-    }
+    componentWillReceiveProps(nextprops) { this.setState({ list: nextprops.data }) }
 
-    addtime = (string) => {
-        var strings = string.split(":");
-        return (parseInt(strings[0]) + 3) + ":" + strings[1] + ":" + strings[2];
-    }
+    addtime = (string) => { return (parseInt(string.split(":")[0]) + 3) + ":" + string.split(":")[1] + ":" + string.split(":")[2] }
+
     getwindirec = (deg) => {
         var winddeg = [
             { min: 348.75, max: 11.25 }, { min: 11.25, max: 33.75 }, { min: 33.75, max: 56.25 }, { min: 56.25, max: 78.75 },
@@ -28,22 +22,21 @@ export default class oneday extends Component {
         ];
         var winddir = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
         var ind;
-        winddeg.forEach((element,index) => {
+        winddeg.forEach((element, index) => {
             if (element.min < deg && element.max > deg) {
                 ind = index;
             }
         })
-        return winddir[ind]+": "+deg;
+        return winddir[ind] + ": " + deg;
     }
     render() {
-        console.log(this.state)
         return (
             <div className="dayDiv">
                 {this.state.list.map((element) =>
                     <div className="onedayDiv" key={"one: " + element.dt_txt}>
                         <p>{this.addtime(element.dt_txt.split(" ")[1])}</p>
                         <WeathIm icon={element.weather[0].icon} />
-                        <p style={{ borderTop:"dashed 1px black" }}>Temp: </p>
+                        <p style={{ borderTop: "dashed 1px black" }}>Temp: </p>
                         <p>{Math.round(element.main.temp)}&#8451;</p>
                         <p>&#8593; {element.main.temp_max}&#8451; &#8595;{element.main.temp_min}&#8451;</p>
                         <p style={{ borderTop: "dashed 1px black" }}>Humidity:</p>
@@ -56,5 +49,4 @@ export default class oneday extends Component {
             </div>
         );
     }
-
 }

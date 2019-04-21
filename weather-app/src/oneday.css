@@ -6,6 +6,7 @@
 .onedayDiv {
     display: inline-block;
     padding-right: 10px;
+    padding-left:10px;
 }
 
     .onedayDiv:not(:first-child) {

@@ -5,28 +5,24 @@ import FiveDays from './fivedaydiv';
 
 export default class forcastWeather extends Component {
     constructor(props) {
-       // console.log(props)
         super(props);
         this.state = {
-            days:[],
+            days: [],
             daysArray: [],
             index: 1
         }
         this.getWeatherdata(this.props);
-        
+
     }
-    componentWillReceiveProps(nextprops) {
-        this.getWeatherdata(nextprops);
-    }
-    getWeatherdata = (data) =>{
+    componentWillReceiveProps(nextprops) { this.getWeatherdata(nextprops); }
+
+    getWeatherdata = (data) => {
         fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + data.lat + "&lon=" + data.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
             .then(response => response.json())
             .then(res => {
-                var list = res.list;
-               // console.log(list);
-                var alldays = list.map((oneElem) => oneElem.dt_txt.split(" ")[0]);
-                var days = alldays.filter((v, i) => alldays.indexOf(v) === i);
-                var daysArray = days.map((dayElement) => list.filter((listElement) => listElement.dt_txt.includes(dayElement)));
+                var alldays = res.list.map((oneElem) => oneElem.dt_txt.split(" ")[0]);
+                var days =(alldays.filter((v, i) => alldays.indexOf(v) === i));
+                var daysArray = days.map((dayElement) => res.list.filter((listElement) => listElement.dt_txt.includes(dayElement)));
 
                 days.shift();
                 this.setState({
@@ -35,13 +31,9 @@ export default class forcastWeather extends Component {
                 })
 
             });
+    }
+    daycallback = (day) => { this.setState({ index: day + 1 }) }
 
-    }
-    daycallback = (day) => {
-        this.setState({
-            index:day+1
-        })
-    }
     render() {
         if (this.state.daysArray.length > 0) {
             return (
@@ -57,7 +49,7 @@ export default class forcastWeather extends Component {
             return (
                 <div>
                 </div>
-                )
+            )
         }
     }
 }
