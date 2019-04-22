@@ -47,6 +47,7 @@ export default class App extends Component {
                 return (
                     <div id="app">
                         <p>Loading User Position</p>
+                        <div className="loader"></div> 
                     </div>
                 )
             }

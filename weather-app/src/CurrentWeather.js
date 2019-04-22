@@ -9,7 +9,8 @@ export default class CurrentWeather extends Component {
         this.state = {
             name: "",
             weather: [],
-            main: {}
+            main: {},
+            error:""
         }
         this.getWeatherdata();
     }
@@ -18,11 +19,18 @@ export default class CurrentWeather extends Component {
         fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + this.props.lat + "&lon=" + this.props.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
             .then(response => response.json())
             .then(res => {
-                this.setState({
-                    name: res.name,
-                    weather: res.weather,
-                    main: res.main
-                });
+                console.log(res);
+                if (res.cod === 200) {
+                    this.setState({
+                        name: res.name,
+                        weather: res.weather,
+                        main: res.main,
+                    })
+                } else {
+                    this.setState({
+                        error: res.message
+                    })
+                }
             });
     }
     render() {
@@ -36,9 +44,20 @@ export default class CurrentWeather extends Component {
                 </div>
             )
         } else {
-            return (
-                <p>Loading current weather data</p>
+            if (this.state.error === "") {
+                return (
+                    <div id="current-div-loading">
+                        <p>Loading current weather data</p>
+                        <div className="loader"></div>
+                    </div>
                 )
+            } else {
+                return (
+                    <div id="current-div-error">
+                        <p>{this.state.error}</p>
+                    </div>
+                    )
+            }
         }
     }
 }
