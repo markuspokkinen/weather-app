@@ -9,6 +9,7 @@ export default class App extends Component {
         this.state = {
             lat: 0,
             lon: 0,
+            err: ""
         }
     }
     componentDidMount() {
@@ -18,6 +19,12 @@ export default class App extends Component {
                     lat: position.coords.latitude,
                     lon: position.coords.longitude,
                 })
+            }, (err) => {
+                this.setState({
+                    err: "denied"
+                })
+
+                console.log(err)
             });
     }
     render() {
@@ -29,10 +36,20 @@ export default class App extends Component {
                 </div>
             )
         } else {
-            return (
-                <div>
-                </div>
+            if (this.state.err === "denied") {
+                return (
+
+                    <div id="app">
+                        <p>Can't show weather data without user position</p>
+                    </div>
                 )
+            } else {
+                return (
+                    <div id="app">
+                        <p>Loading User Position</p>
+                    </div>
+                )
+            }
         }
     }
 }

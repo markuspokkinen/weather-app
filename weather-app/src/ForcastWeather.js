@@ -11,12 +11,12 @@ export default class ForcastWeather extends Component {
             daysArray: [],
             index: 1
         }
-        this.getWeatherdata(this.props);
+        this.getWeatherdata();
 
     }
 
-    getWeatherdata = (data) => {
-        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + data.lat + "&lon=" + data.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
+    getWeatherdata = () => {
+        fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat + "&lon=" + this.props.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
             .then(response => response.json())
             .then(res => {
                 var alldays = res.list.map((oneElem) => oneElem.dt_txt.split(" ")[0]);
@@ -30,7 +30,7 @@ export default class ForcastWeather extends Component {
                 })
             });
     }
-    daycallback = (day) => { this.setState({ index: day + 1 }) }
+    fivedayClickCallback = (day) => { this.setState({ index: day + 1 }) }
 
     render() {
         if (this.state.daysArray.length > 0) {
@@ -39,13 +39,14 @@ export default class ForcastWeather extends Component {
                     <h2>Today</h2>
                     <OneDay data={this.state.daysArray[0]} />
                     <h2>Forecast</h2>
-                    <FiveDays list={this.state.days} callback={this.daycallback.bind(this)} />
+                    <FiveDays list={this.state.days} callback={this.fivedayClickCallback.bind(this)} />
                     <OneDay data={this.state.daysArray[this.state.index]} />
                 </div>
             )
         } else {
             return (
                 <div>
+                    <p>Loading forcast weather data</p>
                 </div>
             )
         }

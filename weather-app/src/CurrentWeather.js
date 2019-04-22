@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
-import CurWeathIm from './WeatherImage';
-import OtherCurData from './OtherCurrentdata';
+import CurrentWeatherImage from './WeatherImage';
+import OtherCurrentWeatherData from './OtherCurrentdata';
 import './CurrentWeather.css'
 
 export default class CurrentWeather extends Component {
@@ -8,10 +8,9 @@ export default class CurrentWeather extends Component {
         super(props);
         this.state = {
             name: "",
-            weather: [{}],
+            weather: [],
             main: {}
         }
-        
         this.getWeatherdata();
     }
 
@@ -27,13 +26,19 @@ export default class CurrentWeather extends Component {
             });
     }
     render() {
-        return (
-            <div id="current-div">
-                <h2> {this.state.name} </h2>
-                <h1>{Math.round(this.state.main.temp)} &#8451;</h1>
-                <CurWeathIm icon={this.state.weather[0].icon} />
-                <OtherCurData main={this.state.main} />
-            </div>
-        )
+        if (this.state.weather.length > 0) {
+            return (
+                <div id="current-div">
+                    <h2> {this.state.name} </h2>
+                    <h1>{Math.round(this.state.main.temp)} &#8451;</h1>
+                    <CurrentWeatherImage icon={this.state.weather[0].icon} />
+                    <OtherCurrentWeatherData main={this.state.main} />
+                </div>
+            )
+        } else {
+            return (
+                <p>Loading current weather data</p>
+                )
+        }
     }
 }

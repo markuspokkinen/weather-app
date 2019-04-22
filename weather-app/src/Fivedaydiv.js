@@ -8,7 +8,7 @@ export default class Fivedaydiv extends Component {
             index: 0
         }
     }
-    getfivedays = (props) => {
+    getnextfivedays = (props) => {
         var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return (props.list.map((listelem) => listelem.split("-")[2])).map((elem) => {
             var date = new Date();
@@ -17,7 +17,7 @@ export default class Fivedaydiv extends Component {
         });
     }
     onClick = (event) => {
-        var index = this.getfivedays(this.props).indexOf(event.target.innerText);
+        var index = this.getnextfivedays(this.props).indexOf(event.target.innerText);
         this.props.callback(index);
         this.setState({
             index: index
@@ -29,7 +29,7 @@ export default class Fivedaydiv extends Component {
             <div id="fivedaysdiv">
                 {this.props.list.map((element, index) =>
                     <div key={"five[" + index + "]"} className="fivedayOne" onClick={this.onClick.bind(this)} style={this.state.index === index ? style : {}}>
-                        <p>{this.getfivedays(this.props)[index]}</p>
+                        <p>{this.getnextfivedays(this.props)[index]}</p>
                     </div>
                 )}
             </div>

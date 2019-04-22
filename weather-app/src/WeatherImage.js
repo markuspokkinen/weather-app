@@ -7,10 +7,10 @@ export default class WeatherImage extends Component {
         var animation = "nothing";
         switch (this.props.icon) {
             case '01d':
-                animation = "spinner";
+                animation = "spinning";
                 break;
             case '01n':
-                animation = "spinner";
+                animation = "spinning";
                 break;
             default:
                 break;
