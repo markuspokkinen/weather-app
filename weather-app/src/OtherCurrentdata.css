@@ -1,5 +1,4 @@
 ﻿#otherCurrentdata > p {
-    font-size: 15px;
     display: inline-block;
     padding: 0;
     margin: 0;
@@ -10,3 +9,9 @@
     #otherCurrentdata > p:not(:first-child) {
         border-left: solid 1px;
     }
+
+@media only screen and (max-width: 800px) {
+    #otherCurrentdata > p {
+        font-size: 13px
+    }
+}

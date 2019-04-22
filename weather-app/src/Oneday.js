@@ -3,39 +3,30 @@ import WeathIm from './WeatherImage';
 import './Oneday.css'
 
 export default class Oneday extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            list: this.props.data
-        };
-    }
-    componentWillReceiveProps(nextprops) { this.setState({ list: nextprops.data }) }
 
     addtime = (string) => { return (parseInt(string.split(":")[0]) + 3) + ":" + string.split(":")[1] + ":" + string.split(":")[2] }
 
     getwindirec = (deg) => {
+        //http://snowfence.umn.edu/Components/winddirectionanddegreeswithouttable3.htm
         var winddeg = [
-            { min: 348.75, max: 11.25 }, { min: 11.25, max: 33.75 }, { min: 33.75, max: 56.25 }, { min: 56.25, max: 78.75 },
-            { min: 78.75, max: 101.25 }, { min: 101.25, max: 123.75 }, { min: 123.75, max: 146.25 }, { min: 146.25, max: 168.75 },
-            { min: 168.75, max: 191.25 }, { min: 191.25, max: 213.75 }, { min: 213.75, max: 236.25 }, { min: 236.25, max: 258.75 },
-            { min: 258.75, max: 281.25 }, { min: 281.25, max: 303.75 }, { min: 303.75, max: 326.25 }, { min: 326.25, max: 348.75 }
+            { min: 348.75, max: 11.25, val: "N" }, { min: 11.25, max: 33.75, val: "NNE" }, { min: 33.75, max: 56.25, val: "NE" }, { min: 56.25, max: 78.75, val: "ENE" },
+            { min: 78.75, max: 101.25, val: "E" }, { min: 101.25, max: 123.75, val: "ESE" }, { min: 123.75, max: 146.25, val: "SE" }, { min: 146.25, max: 168.75, val: "SSE" },
+            { min: 168.75, max: 191.25, val: "S" }, { min: 191.25, max: 213.75, val: "SSW" }, { min: 213.75, max: 236.25, val: "SW" }, { min: 236.25, max: 258.75, val: "WSW" },
+            { min: 258.75, max: 281.25, val: "W" }, { min: 281.25, max: 303.75, val: "WNW" }, { min: 303.75, max: 326.25, val: "NW" }, { min: 326.25, max: 348.75, val: "NNW" }
         ];
-        var winddir = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-        var ind = winddeg.reduce((prevVal, curVal, curInd) => {
+        var wind = winddeg.reduce((prevVal, curVal) => {
             if (curVal.min < deg && curVal.max > deg) {
-                return curInd;
+                return curVal.val;
             } else {
                 return prevVal;
             }
         })
-        console.log(ind);
-        return winddir[ind] + ": " + deg;
+        return wind + ": " + deg;
     }
     render() {
-        //console.log(this.state)
         return (
             <div className="dayDiv">
-                {this.state.list.map((element) =>
+                {this.props.data.map((element) =>
                     <div className="onedayDiv" key={"one: " + element.dt_txt}>
                         <p>{this.addtime(element.dt_txt.split(" ")[1])}</p>
                         <WeathIm icon={element.weather[0].icon} />

@@ -14,14 +14,13 @@ export default class ForcastWeather extends Component {
         this.getWeatherdata(this.props);
 
     }
-    componentWillReceiveProps(nextprops) { this.getWeatherdata(nextprops); }
 
     getWeatherdata = (data) => {
         fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + data.lat + "&lon=" + data.lon + "&APPID=9592eb101cb5b0e09de21ab8f991d0c3&units=metric")
             .then(response => response.json())
             .then(res => {
                 var alldays = res.list.map((oneElem) => oneElem.dt_txt.split(" ")[0]);
-                var days =(alldays.filter((v, i) => alldays.indexOf(v) === i));
+                var days = (alldays.filter((v, i) => alldays.indexOf(v) === i));
                 var daysArray = days.map((dayElement) => res.list.filter((listElement) => listElement.dt_txt.includes(dayElement)));
 
                 days.shift();
@@ -29,7 +28,6 @@ export default class ForcastWeather extends Component {
                     daysArray: daysArray,
                     days: days
                 })
-
             });
     }
     daycallback = (day) => { this.setState({ index: day + 1 }) }

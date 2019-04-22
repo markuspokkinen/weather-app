@@ -2,17 +2,10 @@
 import './WeatherImage.css';
 
 export default class WeatherImage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            icon: props.icon
-        }
-    }
-    componentWillReceiveProps(nextprops) { this.setState({ icon: nextprops.icon }) }
 
     render() {
         var animation = "nothing";
-        switch (this.state.icon) {
+        switch (this.props.icon) {
             case '01d':
                 animation = "spinner";
                 break;
@@ -22,10 +15,8 @@ export default class WeatherImage extends Component {
             default:
                 break;
         }
-        if (this.state.icon !== undefined) {
-            return (< img className={animation} src={"https://openweathermap.org/img/w/" + this.state.icon + ".png"} alt="not loaded" />)
-        } else {
-            return (<div></div>)
-        }
+        if (this.props.icon !== undefined) {
+            return (< img className={animation} src={"https://openweathermap.org/img/w/" + this.props.icon + ".png"} alt="not loaded" />)
+        } else { return (<div></div>) }
     }
 }

@@ -5,16 +5,8 @@ export default class Fivedaydiv extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: this.props.list,
-            five: this.getfivedays(this.props),
             index: 0
         }
-    }
-    componentWillReceiveProps(nextprops) {
-        this.setState({
-            list: nextprops.list,
-            five: this.getfivedays(nextprops),
-        })
     }
     getfivedays = (props) => {
         var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -25,7 +17,7 @@ export default class Fivedaydiv extends Component {
         });
     }
     onClick = (event) => {
-        var index = this.state.five.indexOf(event.target.innerText);
+        var index = this.getfivedays(this.props).indexOf(event.target.innerText);
         this.props.callback(index);
         this.setState({
             index: index
@@ -35,9 +27,9 @@ export default class Fivedaydiv extends Component {
         var style = { backgroundColor: "rgba(0,0,0,0.2)", borderRadius: "5px" }
         return (
             <div id="fivedaysdiv">
-                {this.state.list.map((element, index) =>
+                {this.props.list.map((element, index) =>
                     <div key={"five[" + index + "]"} className="fivedayOne" onClick={this.onClick.bind(this)} style={this.state.index === index ? style : {}}>
-                        <p>{this.state.five[index]}</p>
+                        <p>{this.getfivedays(this.props)[index]}</p>
                     </div>
                 )}
             </div>

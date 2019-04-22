@@ -21,11 +21,18 @@ export default class App extends Component {
             });
     }
     render() {
-        return (
-            <div id="app">
-                <Current lat={this.state.lat} lon={this.state.lon} />
-                <Forecast lat={this.state.lat} lon={this.state.lon} />
-            </div>
-        )
+        if (this.state.lat !== 0 & this.state.lon !== 0) {
+            return (
+                <div id="app">
+                    <Current lat={this.state.lat} lon={this.state.lon} />
+                    <Forecast lat={this.state.lat} lon={this.state.lon} />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                </div>
+                )
+        }
     }
 }
