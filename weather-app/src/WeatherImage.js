@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
-import './weatherImage.css';
+import './WeatherImage.css';
 
-export default class weatherImage extends Component {
+export default class WeatherImage extends Component {
     constructor(props) {
         super(props);
         this.state = {

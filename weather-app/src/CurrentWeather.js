@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
-import CurWeathIm from './weatherImage';
-import OtherCurData from './otherCurrentdata';
-import './currentWeather.css'
+import CurWeathIm from './WeatherImage';
+import OtherCurData from './OtherCurrentdata';
+import './CurrentWeather.css'
 
-export default class currentWeather extends Component {
+export default class CurrentWeather extends Component {
     constructor(props) {
         super(props);
         this.state = {

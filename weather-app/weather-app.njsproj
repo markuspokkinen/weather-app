@@ -37,23 +37,23 @@
     <Content Include="src\App.css">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="src\currentWeather.css">
+    <Content Include="src\CurrentWeather.css">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="src\fivedaydiv.css">
+    <Content Include="src\Fivedaydiv.css">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="src\forecastWeather.css">
+    <Content Include="src\ForecastWeather.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\index.css" />
-    <Content Include="src\oneday.css">
+    <Content Include="src\Oneday.css">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="src\otherCurrentdata.css">
+    <Content Include="src\OtherCurrentdata.css">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="src\weatherImage.css">
+    <Content Include="src\WeatherImage.css">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
@@ -63,21 +63,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\App.js" />
-    <Compile Include="src\currentWeather.js" />
-    <Compile Include="src\fivedaydiv.js">
+    <Compile Include="src\CurrentWeather.js" />
+    <Compile Include="src\Fivedaydiv.js">
       <SubType>Code</SubType>
       <TestFramework>ExportRunner</TestFramework>
     </Compile>
-    <Compile Include="src\forcastWeather.js" />
+    <Compile Include="src\ForcastWeather.js" />
     <Compile Include="src\index.js" />
-    <Compile Include="src\oneday.js">
+    <Compile Include="src\Oneday.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\otherCurrentdata.js">
+    <Compile Include="src\OtherCurrentdata.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\serviceWorker.js" />
-    <Compile Include="src\weatherImage.js" />
+    <Compile Include="src\WeatherImage.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

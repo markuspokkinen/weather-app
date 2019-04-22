@@ -1,8 +1,8 @@
 ﻿import React, { Component } from 'react';
-import WeathIm from './weatherImage';
-import './oneday.css'
+import WeathIm from './WeatherImage';
+import './Oneday.css'
 
-export default class oneday extends Component {
+export default class Oneday extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,7 +30,7 @@ export default class oneday extends Component {
         return winddir[ind] + ": " + deg;
     }
     render() {
-        console.log(this.state)
+        //console.log(this.state)
         return (
             <div className="dayDiv">
                 {this.state.list.map((element) =>

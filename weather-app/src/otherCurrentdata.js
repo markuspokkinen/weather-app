@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
-import './otherCurrentdata.css'
+import './OtherCurrentdata.css'
 
-export default class otherCurrentdata extends Component {
+export default class OtherCurrentdata extends Component {
     constructor(props) {
         super(props);
         this.state = {

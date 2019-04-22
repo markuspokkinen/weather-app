@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
-import './fivedaydiv.css';
+import './Fivedaydiv.css';
 
-export default class fivedaydiv extends Component {
+export default class Fivedaydiv extends Component {
     constructor(props) {
         super(props);
         this.state = {

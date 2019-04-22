@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Forecast from './forcastWeather';
-import Current from './currentWeather';
+import Forecast from './ForcastWeather';
+import Current from './CurrentWeather';
 import './App.css';
 
 export default class App extends Component {

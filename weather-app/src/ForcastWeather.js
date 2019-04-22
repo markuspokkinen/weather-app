@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
-import OneDay from './oneday';
-import './forecastWeather.css';
-import FiveDays from './fivedaydiv';
+import OneDay from './Oneday'
+import FiveDays from './Fivedaydiv';
+import './ForecastWeather.css';
 
-export default class forcastWeather extends Component {
+export default class ForcastWeather extends Component {
     constructor(props) {
         super(props);
         this.state = {
