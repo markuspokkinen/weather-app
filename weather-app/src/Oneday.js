@@ -21,12 +21,14 @@ export default class Oneday extends Component {
             { min: 258.75, max: 281.25 }, { min: 281.25, max: 303.75 }, { min: 303.75, max: 326.25 }, { min: 326.25, max: 348.75 }
         ];
         var winddir = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-        var ind;
-        winddeg.forEach((element, index) => {
-            if (element.min < deg && element.max > deg) {
-                ind = index;
+        var ind = winddeg.reduce((prevVal, curVal, curInd) => {
+            if (curVal.min < deg && curVal.max > deg) {
+                return curInd;
+            } else {
+                return prevVal;
             }
         })
+        console.log(ind);
         return winddir[ind] + ": " + deg;
     }
     render() {
