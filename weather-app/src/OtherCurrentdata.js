@@ -2,6 +2,7 @@
 import './OtherCurrentdata.css'
 
 export default class OtherCurrentdata extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
